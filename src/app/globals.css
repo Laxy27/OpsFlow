@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * OpsFlow theme: cool slate neutrals with a teal accent.
+ * --background is the app canvas; cards and the sidebar sit on --card.
+ */
+:root {
+  --background: oklch(0.982 0.003 247.9);
+  --foreground: oklch(0.208 0.042 265.8);
+  --surface: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.042 265.8);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.208 0.042 265.8);
+  --primary: oklch(0.511 0.096 186.4);
+  --primary-foreground: oklch(0.985 0.01 181);
+  --secondary: oklch(0.968 0.007 247.9);
+  --secondary-foreground: oklch(0.279 0.041 260);
+  --muted: oklch(0.968 0.007 247.9);
+  --muted-foreground: oklch(0.504 0.036 257.4);
+  --accent: oklch(0.966 0.02 184);
+  --accent-foreground: oklch(0.386 0.063 188.4);
+  --destructive: oklch(0.577 0.215 27.3);
+  --border: oklch(0.925 0.009 255.5);
+  --input: oklch(0.885 0.013 255.5);
+  --ring: oklch(0.6 0.104 184.7);
+  --chart-1: #0d9488;
+  --chart-2: #2563eb;
+  --chart-3: oklch(0.769 0.165 70.1);
+  --chart-4: oklch(0.704 0.04 256.8);
+  --chart-5: oklch(0.645 0.2 16.4);
+  --radius: 0.625rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.372 0.044 257.3);
+  --sidebar-primary: oklch(0.511 0.096 186.4);
+  --sidebar-primary-foreground: oklch(0.985 0.01 181);
+  --sidebar-accent: oklch(0.966 0.02 184);
+  --sidebar-accent-foreground: oklch(0.386 0.063 188.4);
+  --sidebar-border: oklch(0.925 0.009 255.5);
+  --sidebar-ring: oklch(0.6 0.104 184.7);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  /* Card styling shared by dashboard panels and the orders table. */
+  .panel {
+    @apply rounded-xl border bg-card shadow-[0_1px_2px_0_rgb(15_23_42/0.04)];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
